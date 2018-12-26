@@ -3,7 +3,7 @@ package com.durex;
 public class Main {
     public static void main(String[] args) {
 
-        Array array = new Array(20);
+        Array<Integer> array = new Array<>(20);
         for (int i = 0; i < 10; i++) {
             array.addLast(i);
         }
@@ -22,5 +22,7 @@ public class Main {
 
         array.removeFirst();
         System.out.println(array);
+
+        System.out.println(array.contains(1));
     }
 }

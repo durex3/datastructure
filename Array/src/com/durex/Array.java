@@ -1,9 +1,10 @@
 package com.durex;
 
 import java.util.Arrays;
+import java.util.Objects;
 
-public class Array {
-    int[] data;
+public class Array<T> {
+    T[] data;
     int size;
 
     /**
@@ -11,7 +12,7 @@ public class Array {
      * @param capacity
      */
     public Array(int capacity) {
-        data = new int[capacity];
+        data = (T[])new Object[capacity];
         size = 0;
     }
 
@@ -38,11 +39,11 @@ public class Array {
         return size == 0;
     }
 
-    public void addFirst(int e) {
+    public void addFirst(T e) {
         add(0, e);
     }
 
-    public void addLast(int e) {
+    public void addLast(T e) {
        add(size, e);
     }
 
@@ -51,7 +52,7 @@ public class Array {
      * @param index 待插入的索引
      * @param e 被插入的元素
      */
-    public void add(int index, int e) {
+    public void add(int index, T e) {
         if (size == data.length) {
             throw new IllegalArgumentException("AddLast failed. Array is full.");
         }
@@ -68,9 +69,9 @@ public class Array {
     /**
      * 返回指定索引的元素
      * @param index 指定的索引
-     * @return int 返回的元素
+     * @return T 返回的元素
      */
-    public int get(int index) {
+    public T get(int index) {
         if (index < 0 || index >= size) {
             throw new IllegalArgumentException("Get failed. Index is illegal.");
         }
@@ -82,7 +83,7 @@ public class Array {
      * @param index 被替换元素的索引
      * @param e 替换的元素
      */
-    public void set(int index, int e) {
+    public void set(int index, T e) {
         if (index < 0 || index >= size) {
             throw new IllegalArgumentException("Set failed. Index is illegal.");
         }
@@ -94,9 +95,9 @@ public class Array {
      * @param e 需要查看的元素
      * @return 是否包含
      */
-    public boolean contains(int e) {
+    public boolean contains(T e) {
         for (int i = 0; i < size; i++) {
-            if (e == data[i]) {
+            if (e.equals(data[i])) {
                 return true;
             }
         }
@@ -108,9 +109,9 @@ public class Array {
      * @param e 查找的元素
      * @return int 查找的元素的索引
      */
-    public int find(int e) {
+    public int find(T e) {
         for (int i = 0; i < size; i++) {
-            if (e == data[i]) {
+            if (data[i].equals(e)) {
                 return i;
             }
         }
@@ -121,25 +122,26 @@ public class Array {
     /**
      * 删除指定索引的元素
      * @param index 待删除元素的索引
-     * @return 被删除的元素
+     * @return T 被删除的元素
      */
-    public int remove(int index) {
+    public T remove(int index) {
         if (index < 0 || index >= size) {
             throw new IllegalArgumentException("Remove failed. Require index >= 0 and index <= size.");
         }
-        int result = data[index];
+        T result = data[index];
         for (int i = index + 1; i < size; i++) {
             data[i - 1] = data[i];
         }
         size--;
+        data[size] = null;
         return result;
     }
 
-    public int removeFirst() {
+    public T removeFirst() {
         return remove(0);
     }
 
-    public int removeLast() {
+    public T removeLast() {
         return remove(size - 1);
     }
 
@@ -148,7 +150,7 @@ public class Array {
      * @param e 被删除的元素
      * @return boolean 删除是否成功
      */
-    public boolean removeElement(int e) {
+    public boolean removeElement(T e) {
         int index = find(e);
         if (index != -1) {
             remove(index);
