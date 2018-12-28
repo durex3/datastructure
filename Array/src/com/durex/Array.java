@@ -53,17 +53,29 @@ public class Array<T> {
      * @param e 被插入的元素
      */
     public void add(int index, T e) {
-        if (size == data.length) {
-            throw new IllegalArgumentException("AddLast failed. Array is full.");
-        }
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("Add failed. Require index >= 0 and index <= size.");
+        }
+        if (size == data.length) {
+           reSize(2 * data.length);
         }
         for (int i = size - 1; i >= index; i--) {
             data[i + 1] = data[i];
         }
         data[index] = e;
         size++;
+    }
+
+    /**
+     * 给数组扩容
+     * @param newCapacity 新的容量
+     */
+    private void reSize(int newCapacity) {
+        T[] newData = (T[])new Object[newCapacity];
+        for (int i = 0; i < size; i++) {
+            newData[i] = data[i];
+        }
+        data = newData;
     }
 
     /**
@@ -134,6 +146,9 @@ public class Array<T> {
         }
         size--;
         data[size] = null;
+        if (size == data.length / 2) {
+            reSize(data.length / 2);
+        }
         return result;
     }
 
