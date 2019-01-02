@@ -22,7 +22,5 @@ public class Main {
 
         array.removeFirst();
         System.out.println(array);
-
-        System.out.println(array.contains(1));
     }
 }
