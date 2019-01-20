@@ -39,7 +39,7 @@ public class LinkedList<T> {
 
     public void add(int index, T t) {
         if (index < 0 || index > size) {
-            throw new IllegalArgumentException("Add failed. Illagal index.");
+            throw new IllegalArgumentException("Add failed. Illegal index.");
         }
         Node prev = dummyHead;
         for (int i = 0; i < index; i++) {
@@ -50,7 +50,7 @@ public class LinkedList<T> {
 //        node.next = prev.next;
 //        prev.next = node;
 
-        prev = new Node(t, prev.next);
+        prev.next = new Node(t, prev.next);
         size++;
 
     }
@@ -65,5 +65,58 @@ public class LinkedList<T> {
 
     public void addLast(T t) {
         add(size, t);
+    }
+
+    public T get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Get failed. Illegal index.");
+        }
+        Node cur = dummyHead.next;
+        for (int i = 0; i < index; i++) {
+            cur = cur.next;
+        }
+        return cur.t;
+    }
+
+    public T getFirst() {
+        return get(0);
+    }
+
+    public T getLast() {
+        return get(size - 1);
+    }
+
+    public void set(int index, T t) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Set failed. Illegal index.");
+        }
+        Node cur = dummyHead.next;
+        for (int i = 0; i < index; i++) {
+            cur = cur.next;
+        }
+        cur.t = t;
+    }
+
+    public boolean contains(T t) {
+        Node cur = dummyHead.next;
+        while (cur != null) {
+            if (cur.t.equals(t)) {
+                return true;
+            }
+            cur = cur.next;
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        Node cur = dummyHead.next;
+        while (cur != null) {
+            result.append(cur + "->");
+            cur = cur.next;
+        }
+        result.append("NULL");
+        return result.toString();
     }
 }
