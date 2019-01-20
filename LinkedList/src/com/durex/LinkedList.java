@@ -23,7 +23,7 @@ public class LinkedList<T> {
             return t.toString();
         }
     }
-    private Node head;
+    private Node dummyHead;
     private int size;
 
     public LinkedList(T[] t) {
@@ -31,8 +31,28 @@ public class LinkedList<T> {
     }
 
     public LinkedList() {
-        head = null;
+        dummyHead = new Node(null, null);
         size = 0;
+    }
+
+
+
+    public void add(int index, T t) {
+        if (index < 0 || index > size) {
+            throw new IllegalArgumentException("Add failed. Illagal index.");
+        }
+        Node prev = dummyHead;
+        for (int i = 0; i < index; i++) {
+            prev = prev.next;
+        }
+
+//        Node node = new Node(t);
+//        node.next = prev.next;
+//        prev.next = node;
+
+        prev = new Node(t, prev.next);
+        size++;
+
     }
 
     public void addFirst(T t) {
@@ -40,29 +60,7 @@ public class LinkedList<T> {
 //        node.next = head;
 //        head = node;
 
-        head = new Node(t, head);
-        size++;
-
-    }
-
-    public void add(int index, T t) {
-        if (index < 0 || index > size) {
-            throw new IllegalArgumentException("Index");
-        }
-        if (index == 0) {
-            addFirst(t);
-        } else {
-            Node prev = head;
-            for (int i = 0; i < index - 1; i++) {
-                prev = prev.next;
-            }
-//            Node node = new Node(t);
-//            node.next = prev.next;
-//            prev.next = node;
-
-            prev = new Node(t, prev.next);
-            size++;
-        }
+        add(0, t);
     }
 
     public void addLast(T t) {
