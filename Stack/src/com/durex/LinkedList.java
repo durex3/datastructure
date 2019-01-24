@@ -35,6 +35,7 @@ public class LinkedList<T> {
         size = 0;
     }
 
+
     public int getSize() {
         return size;
     }
