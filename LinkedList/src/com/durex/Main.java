@@ -12,6 +12,7 @@ public class Main {
         System.out.println(linkedList);
         linkedList.set(2, 77);
         System.out.println(linkedList);
-        System.out.println(linkedList.contains(77));
+        linkedList.remove(2);
+        System.out.println(linkedList);
     }
 }
