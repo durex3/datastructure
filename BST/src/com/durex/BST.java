@@ -31,7 +31,7 @@ public class BST<T extends Comparable<T>> {
     }
 
     public void add(T t) {
-        add(root, t);
+       root = add(root, t);
     }
 
     /**
@@ -40,7 +40,7 @@ public class BST<T extends Comparable<T>> {
      * @param t
      * @return
      */
-    public Node add(Node node, T t) {
+    private Node add(Node node, T t) {
         if (node == null) {
             size++;
             return new Node(t);
@@ -55,17 +55,16 @@ public class BST<T extends Comparable<T>> {
 
     /**
      * 非递归实现二分搜索树的添加
-     * @param node
      * @param t
      */
-    public void add2(Node node, T t) {
-        if (node == null) {
-            node = new Node(t);
+    public void add2(T t) {
+        if (root == null) {
+            root = new Node(t);
             size++;
             return;
         }
-        Node current = node;
-        Node parent = node;
+        Node current = root;
+        Node parent = root;
         while (current != null) {
             parent = current;
             if (t.compareTo(current.t) < 0) {
@@ -88,7 +87,7 @@ public class BST<T extends Comparable<T>> {
         return contains(root, t);
     }
 
-    public boolean contains(Node node, T t) {
+    private boolean contains(Node node, T t) {
         if (node == null) {
             return false;
         }
@@ -103,15 +102,14 @@ public class BST<T extends Comparable<T>> {
 
     /**
      * 非递归查询
-     * @param node
      * @param t
      * @return
      */
-    public boolean contains2(Node node, T t) {
-        if (node == null) {
+    public boolean contains2(T t) {
+        if (root == null) {
             return false;
         }
-        Node current = node;
+        Node current = root;
         while (current != null) {
             if (t.compareTo(current.t) == 0) {
                 return true;
@@ -122,5 +120,18 @@ public class BST<T extends Comparable<T>> {
             }
         }
         return false;
+    }
+
+    public void preOrder() {
+        preOrder(root);
+    }
+
+    private void preOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        System.out.println(node.t);
+        preOrder(node.left);
+        preOrder(node.right);
     }
 }
