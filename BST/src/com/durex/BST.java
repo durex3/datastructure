@@ -134,4 +134,30 @@ public class BST<T extends Comparable<T>> {
         preOrder(node.left);
         preOrder(node.right);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        generateBSTString(root, 0, stringBuilder);
+        return stringBuilder.toString();
+    }
+
+    private void generateBSTString(Node node, int depth, StringBuilder stringBuilder) {
+        if (node == null) {
+            stringBuilder.append(generateDepthString(depth) + "null\n");
+            return;
+        }
+        stringBuilder.append(generateDepthString(depth) + node.t + "\n");
+        generateBSTString(node.left, depth + 1, stringBuilder);
+        generateBSTString(node.right, depth + 1, stringBuilder);
+    }
+
+    private String generateDepthString(int depth) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < depth; i++) {
+            stringBuilder.append("--");
+        }
+        return stringBuilder.toString();
+    }
+
 }

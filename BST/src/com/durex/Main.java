@@ -7,6 +7,6 @@ public class Main {
         for (int num : nums) {
             bst.add2(num);
         }
-        bst.preOrder();
+        System.out.println(bst.toString());
     }
 }
