@@ -1,5 +1,7 @@
 package com.durex;
 
+import java.util.Stack;
+
 public class BST<T extends Comparable<T>> {
 
     private class Node {
@@ -133,6 +135,51 @@ public class BST<T extends Comparable<T>> {
         System.out.println(node.t);
         preOrder(node.left);
         preOrder(node.right);
+    }
+
+    public void preOrderNonrecursive() {
+        if (root == null) {
+            return;
+        }
+        Stack<Node> nodeStack = new Stack<>();
+        nodeStack.push(root);
+        Node currentNode = null;
+        while (!nodeStack.isEmpty()) {
+            currentNode = nodeStack.pop();
+            System.out.println(currentNode.t);
+            if (currentNode.right != null) {
+                nodeStack.push(currentNode.right);
+            }
+            if (currentNode.left != null) {
+                nodeStack.push(currentNode.left);
+            }
+        }
+    }
+
+    public void inOrder() {
+        inOrder(root);
+    }
+
+    private void inOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        inOrder(node.left);
+        System.out.println(node.t);
+        inOrder(node.right);
+    }
+
+    public void postOrder() {
+        postOrder(root);
+    }
+
+    private void postOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        postOrder(node.left);
+        postOrder(node.right);
+        System.out.println(node.t);
     }
 
     @Override

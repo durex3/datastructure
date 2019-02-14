@@ -7,6 +7,13 @@ public class Main {
         for (int num : nums) {
             bst.add2(num);
         }
-        System.out.println(bst.toString());
+        //System.out.println(bst.toString());
+        bst.preOrder();
+        System.out.println();
+        bst.preOrderNonrecursive();
+        System.out.println();
+        bst.inOrder();
+        System.out.println();
+        bst.postOrder();
     }
 }
