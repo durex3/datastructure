@@ -1,5 +1,7 @@
 package com.durex;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class BST<T extends Comparable<T>> {
@@ -152,6 +154,25 @@ public class BST<T extends Comparable<T>> {
             }
             if (currentNode.left != null) {
                 nodeStack.push(currentNode.left);
+            }
+        }
+    }
+
+    public void levelOrder() {
+        if (root == null) {
+            return;
+        }
+        Queue<Node> nodeQueue = new LinkedList<>();
+        nodeQueue.add(root);
+        Node currentNode = null;
+        while (!nodeQueue.isEmpty()) {
+            currentNode = nodeQueue.remove();
+            System.out.println(currentNode.t);
+            if (currentNode.left != null) {
+                nodeQueue.add(currentNode.left);
+            }
+            if (currentNode.right != null) {
+                nodeQueue.add(currentNode.right);
             }
         }
     }
