@@ -1,9 +1,12 @@
-package com.durex;
+package com.durex.array;
 
+/**
+ * @author durex
+ */
 public class Main {
     public static void main(String[] args) {
 
-        Array<Integer> array = new Array<>();
+        com.durex.array.Array<Integer> array = new Array<>();
         for (int i = 0; i < 10; i++) {
             array.addLast(i);
         }

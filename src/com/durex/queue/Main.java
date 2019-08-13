@@ -1,5 +1,8 @@
-package com.durex;
+package com.durex.queue;
 
+/**
+ * @author durex
+ */
 public class Main {
 
     public static void main(String[] args) {

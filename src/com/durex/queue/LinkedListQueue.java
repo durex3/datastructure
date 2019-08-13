@@ -1,5 +1,8 @@
-package com.durex;
+package com.durex.queue;
 
+/**
+ * @author durex
+ */
 public class LinkedListQueue<T> implements Queue<T> {
 
     private class Node {

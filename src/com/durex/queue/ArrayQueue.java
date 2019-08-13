@@ -1,5 +1,8 @@
-package com.durex;
+package com.durex.queue;
 
+/**
+ * @author durex
+ */
 public class ArrayQueue<T> implements Queue<T> {
 
     private Array<T> array;

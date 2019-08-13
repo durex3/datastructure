@@ -1,8 +1,8 @@
-package com.durex;
+package com.durex.queue;
 
-import java.util.Arrays;
-import java.util.Objects;
-
+/**
+ * @author durex
+ */
 public class Array<T> {
     T[] data;
     int size;

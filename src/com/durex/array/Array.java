@@ -1,5 +1,8 @@
-package com.durex;
+package com.durex.array;
 
+/**
+ * @author durex
+ */
 public class Array<T> {
     T[] data;
     int size;

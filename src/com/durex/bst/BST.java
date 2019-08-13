@@ -1,9 +1,12 @@
-package com.durex;
+package com.durex.bst;
 
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
+/**
+ * @author durex
+ */
 public class BST<T extends Comparable<T>> {
 
     private class Node {

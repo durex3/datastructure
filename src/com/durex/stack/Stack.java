@@ -1,5 +1,8 @@
-package com.durex;
+package com.durex.stack;
 
+/**
+ * @author durex
+ */
 public interface Stack<T> {
 
     int getSize();

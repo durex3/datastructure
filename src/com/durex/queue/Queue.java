@@ -1,5 +1,8 @@
-package com.durex;
+package com.durex.queue;
 
+/**
+ * @author durex
+ */
 public interface Queue<T> {
 
     void enqueue(T t);

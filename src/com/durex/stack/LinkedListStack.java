@@ -1,5 +1,8 @@
-package com.durex;
+package com.durex.stack;
 
+/**
+ * @author durex
+ */
 public class LinkedListStack<T> implements Stack<T> {
 
     private LinkedList<T> linkedList;
