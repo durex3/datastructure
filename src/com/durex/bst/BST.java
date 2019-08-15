@@ -64,7 +64,7 @@ public class BST<T extends Comparable<T>> {
      * 非递归实现二分搜索树的添加
      * @param t
      */
-    public void add2(T t) {
+    public void addNonRecursive(T t) {
         if (root == null) {
             root = new Node(t);
             size++;
@@ -112,7 +112,7 @@ public class BST<T extends Comparable<T>> {
      * @param t
      * @return
      */
-    public boolean contains2(T t) {
+    public boolean containsNonRecursive(T t) {
         if (root == null) {
             return false;
         }
@@ -141,8 +141,7 @@ public class BST<T extends Comparable<T>> {
         preOrder(node.left);
         preOrder(node.right);
     }
-
-    public void preOrderNonrecursive() {
+    public void preOrderNonRecursive() {
         if (root == null) {
             return;
         }
