@@ -1,4 +1,4 @@
-package com.durex.linkedlist;
+package com.durex.set;
 
 /**
  * @author durex

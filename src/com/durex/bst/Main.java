@@ -6,7 +6,7 @@ package com.durex.bst;
 public class Main {
     public static void main(String[] args) {
         BST<Integer> bst = new BST<>();
-        int[] nums = {5, 3, 6, 8, 4, 2};
+        int[] nums = {5};
         for (int num : nums) {
             bst.addNonRecursive(num);
         }
@@ -18,7 +18,7 @@ public class Main {
         System.out.println(bst.maximum());
 
         System.out.println("删除任意元素");
-        bst.remove(3);
+        bst.removeMin();
 
         System.out.println("前序遍历");
         bst.preOrder();

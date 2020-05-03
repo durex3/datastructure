@@ -1,4 +1,4 @@
-package com.durex.bst;
+package com.durex.set;
 
 import java.util.LinkedList;
 import java.util.Queue;
